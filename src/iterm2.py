@@ -3,7 +3,7 @@ import osascript
 
 
 def _apple_script_string_escape(s):
-    return repr(s).replace('"', '\\"')
+    return repr(s)[1:-1].replace('"', '\\"')
 
 
 def _iterm_exec(cmd):
@@ -19,3 +19,11 @@ end tell
 
 def run(command):
     _iterm_exec(command)
+
+
+def test_run():
+    run('ancypwn attach -c "ls"')
+
+
+if __name__ == '__main__':
+    test_run()
