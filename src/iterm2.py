@@ -1,9 +1,9 @@
 import os
 import osascript
 
-
 def _apple_script_string_escape(s):
-    return repr(s)[1:-1].replace('"', '\\"')
+    tmp = repr(s)[1:-1].replace('"', '')
+    return repr(tmp)[1:-1].replace('\\', '') # 这里是iterm2 的bug
 
 
 def _iterm_exec(cmd):
@@ -20,6 +20,7 @@ end tell
 def run(command):
     _iterm_exec(command)
 
+#/usr/local/bin/ancyterm -s docker.for.mac.host.internal -p 15111 -t iterm2 -e '/usr/bin/gdb -q  "./character" 734'
 
 def test_run():
     run('ancypwn attach -c "ls"')
