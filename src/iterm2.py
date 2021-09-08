@@ -3,7 +3,7 @@ import osascript
 
 def _apple_script_string_escape(s):
     tmp = repr(s)[1:-1].replace('"', '')
-    return repr(tmp)[1:-1].replace('\\', '') # 这里是iterm2 的bug
+    return repr(tmp)[1:-1].replace('\\', '') # fix this bug
 
 
 def _iterm_exec(cmd):
